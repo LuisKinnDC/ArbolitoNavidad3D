@@ -667,7 +667,13 @@ function updateCountdown() {
             titleEl.textContent = '¡Feliz Navidad! 🎉';
             subEl.textContent = 'Que hoy te envuelva un día hermoso, lleno de luz, calma y pequeños momentos que te hagan sonreír sin darte cuenta. Ojalá cada sonrisa de hoy se quede contigo… y si alguna nace pensando en mí, la cuidaré con todo mi corazón. Siempre con mucho cariño 💖';
         }
-        // Removed auto-launch; now manual via button
+        // auto-launch the celebration once when the target is reached
+        if (!celebrationLaunched) {
+            // hide manual reveal button if present
+            const tryBtn = document.getElementById('try-confetti-now');
+            if (tryBtn){ tryBtn.hidden = true; tryBtn.parentElement && tryBtn.parentElement.setAttribute('aria-hidden','true'); }
+            triggerCelebration('Mi Alegna❤️');
+        }
         return;
     }
 
