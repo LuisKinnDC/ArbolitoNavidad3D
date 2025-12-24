@@ -571,6 +571,44 @@ function closeCelebrationModal() {
     });
 })();
 
+// Bind sorpresa button
+(function bindSorpresaBtn() {
+    const btn = document.getElementById('sorpresa-btn');
+    const modal = document.getElementById('sorpresa-modal');
+    const closeBtn = document.getElementById('sorpresa-close');
+    const overlay = document.getElementById('overlay');
+    if (!btn || !modal || !closeBtn || !overlay) return;
+
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (isChristmas()) {
+            // Show the celebration modal with confetti
+            triggerCelebration('Mi Alegna❤️');
+        } else {
+            // Show the waiting message modal
+            overlay.classList.add('modal-visible');
+            overlay.setAttribute('aria-hidden', 'false');
+            modal.classList.add('show');
+            modal.setAttribute('aria-hidden', 'false');
+        }
+    });
+
+    const closeModal = () => {
+        overlay.classList.remove('modal-visible');
+        overlay.setAttribute('aria-hidden', 'true');
+        modal.classList.remove('show');
+        modal.setAttribute('aria-hidden', 'true');
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            closeModal();
+        }
+    });
+})();
+
 // ===== Countdown to Christmas & greeting =====
 function getNextChristmas() {
     const now = new Date();
@@ -586,6 +624,11 @@ function getNextChristmas() {
 }
 
 function pad(n, width = 2) { return String(n).padStart(width, '0'); }
+
+function isChristmas() {
+    const now = new Date();
+    return now.getMonth() === 11 && now.getDate() === 25;
+}
 
 // Test button removed. To test manually, run in DevTools:
 // triggerCelebration('Tu Nombre', 'Mensaje de prueba 💖');
@@ -624,13 +667,7 @@ function updateCountdown() {
             titleEl.textContent = '¡Feliz Navidad! 🎉';
             subEl.textContent = 'Que hoy te envuelva un día hermoso, lleno de luz, calma y pequeños momentos que te hagan sonreír sin darte cuenta. Ojalá cada sonrisa de hoy se quede contigo… y si alguna nace pensando en mí, la cuidaré con todo mi corazón. Siempre con mucho cariño 💖';
         }
-        // auto-launch the celebration once when the target is reached
-        if (!celebrationLaunched) {
-            // hide manual reveal button if present
-            const tryBtn = document.getElementById('try-confetti-now');
-            if (tryBtn){ tryBtn.hidden = true; tryBtn.parentElement && tryBtn.parentElement.setAttribute('aria-hidden','true'); }
-            triggerCelebration('Mi Alegna❤️');
-        }
+        // Removed auto-launch; now manual via button
         return;
     }
 
