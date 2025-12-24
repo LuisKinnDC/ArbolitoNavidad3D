@@ -525,7 +525,7 @@ function triggerCelebration(name = '', desc = '') {
     // follow-up burst
     setTimeout(() => { spawnConfetti(120, centerX, centerY - 20); }, 800);
     // schedule auto-close
-    celebrationTimeout = setTimeout(() => { closeCelebrationModal(); }, 9000);
+    celebrationTimeout = setTimeout(() => { closeCelebrationModal(); }, 15000);
 }
 
 function closeCelebrationModal() {
@@ -597,7 +597,7 @@ function pad(n, width = 2) { return String(n).padStart(width, '0'); }
   btn.addEventListener('click', (e)=>{
     e.preventDefault();
 
-    triggerCelebration('Mi Niño(a)', 'Que pases un día maravilloso, lleno de amor y momentos dulces. Con todo mi cariño 💖');
+    triggerCelebration('Mi Alegna❤️', 'Que hoy te envuelva un día hermoso, lleno de luz, calma y pequeños momentos que te hagan sonreír sin darte cuenta. Ojalá cada sonrisa de hoy se quede contigo… y si alguna nace pensando en mí, la cuidaré con todo mi corazón. Siempre con mucho cariño 💖');
   });
 })();
 
@@ -622,14 +622,14 @@ function updateCountdown() {
         if (greetingEl && !greetingEl.classList.contains('celebrate')) {
             greetingEl.classList.add('celebrate');
             titleEl.textContent = '¡Feliz Navidad! 🎉';
-            subEl.textContent = 'Que pases un día maravilloso, lleno de amor y momentos dulces, que cada sonrisa de hoy te acompañe siempre. Con todo mi cariño 💖';
+            subEl.textContent = 'Que hoy te envuelva un día hermoso, lleno de luz, calma y pequeños momentos que te hagan sonreír sin darte cuenta. Ojalá cada sonrisa de hoy se quede contigo… y si alguna nace pensando en mí, la cuidaré con todo mi corazón. Siempre con mucho cariño 💖';
         }
         // auto-launch the celebration once when the target is reached
         if (!celebrationLaunched) {
             // hide manual reveal button if present
             const tryBtn = document.getElementById('try-confetti-now');
             if (tryBtn){ tryBtn.hidden = true; tryBtn.parentElement && tryBtn.parentElement.setAttribute('aria-hidden','true'); }
-            triggerCelebration('Mi Niño(a)');
+            triggerCelebration('Mi Alegna❤️');
         }
         return;
     }
