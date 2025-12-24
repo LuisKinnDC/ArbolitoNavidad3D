@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Árbol de Navidad</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        html,
+        body,
+        #app {
+            height: 100%;
+            margin: 0;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-b from-slate-900 via-indigo-900 to-slate-800 text-white">
+    <div id="app" class="app">
+
+        <!-- Centered greeting + countdown as cards -->
+        <div id="greeting" class="center-greeting" role="region" aria-label="Saludo de navidad">
+          <div class="greeting-title"><strong>Falta Poco para Navidad</strong></div>
+          <div class="greeting-sub">Espera que el contador termine hay una sorpresa especial 🎁</div>
+
+          <div class="countdown-grid" role="group" aria-label="Cuenta regresiva hasta Navidad">
+            <div class="cd-card" aria-live="polite"><div class="cd-value" id="cd-days">0</div><div class="cd-label">Días</div></div>
+            <div class="cd-card" aria-live="polite"><div class="cd-value" id="cd-hours">00</div><div class="cd-label">Horas</div></div>
+            <div class="cd-card" aria-live="polite"><div class="cd-value" id="cd-mins">00</div><div class="cd-label">Minutos</div></div>
+            <div class="cd-card" aria-live="polite"><div class="cd-value" id="cd-secs">00</div><div class="cd-label">Segundos</div></div>
+          </div>
+
+          <div class="celebrate-actions" aria-hidden="true">
+            <button id="try-confetti-now" class="try-btn" aria-label="Probar confeti ahora" hidden>Probar confeti</button>
+          </div>
+
+        </div>
+
+        <canvas id="canvas" aria-label="Árbol de Navidad 3D"></canvas>
+
+    </div>
+
+    <!-- Overlay container (outside #app) for notification and confetti -->
+    <div id="overlay" aria-hidden="true">
+      <div class="celebration-backdrop" aria-hidden="true"></div>
+
+      <div id="celebration-banner" class="celebration-banner" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="celebration-text" aria-describedby="celebration-desc">
+        <button id="celebration-close" class="celebration-close" aria-label="Cerrar celebración">&times;</button>
+        <div id="celebration-text" class="celebration-text"></div>
+        <div id="celebration-desc" class="celebration-desc">Que pases un día maravilloso, lleno de amor y momentos dulces, que cada sonrisa de hoy te acompañe siempre. Con todo mi cariño 💖</div>
+      </div>
+
+      <div class="manual-controls">
+        <!--<button id="snow-toggle" class="snow-btn" aria-pressed="true" aria-label="Activar/Desactivar nieve">❄️ Nieve</button>-->
+        <button id="manual-celebrate" class="test-btn" aria-controls="celebration-banner" aria-label="Probar celebración">Probar celebración</button>-->
+      </div>
+      <canvas id="snow-canvas" class="snow-canvas" aria-hidden="true"></canvas>
+      <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
+    </div>
+
+    <script type="module" src="./script.js"></script>
+</body>
+
+</html>
